@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>🎂 Chúc Mừng Sinh Nhật Trường 🎉</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff66ff;
+            text-shadow: 0 0 20px #ff33cc, 0 0 40px #ff33cc;
+            margin-top: 40px;
+            font-size: 48px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        h2 {
+            color: #fff;
+            text-shadow: 0 0 10px #ff99ff;
+            animation: fadeIn 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff33cc;
+            }
+
+            to {
+                text-shadow: 0 0 30px #ff99ff, 0 0 60px #ff33cc;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.5;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hình ảnh bay lên (thẳng, không xoay) */
+        .floating {
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 10s linear infinite;
+            filter: drop-shadow(0 0 10px #fff);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        /* Pháo giấy */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: hsl(calc(360 * var(--hue)), 100%, 60%);
+            top: 0;
+            left: 0;
+            opacity: 0.8;
+            animation: confettiFall 5s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Bánh sinh nhật nhỏ (vẽ bằng CSS) */
+        .mini-cake {
+            position: absolute;
+            bottom: -50px;
+            width: 40px;
+            height: 30px;
+            background: #ff66cc;
+            border-radius: 5px;
+            animation: floatUp 12s linear infinite;
+            box-shadow: 0 0 10px #ff99ff;
+        }
+
+            .mini-cake::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: 17px;
+                width: 6px;
+                height: 10px;
+                background: #ffcc00;
+                border-radius: 2px;
+            }
+
+            .mini-cake::after {
+                content: '';
+                position: absolute;
+                top: -14px;
+                left: 18px;
+                width: 4px;
+                height: 6px;
+                background: #ff6600;
+                border-radius: 50%;
+                box-shadow: 0 0 8px #ff6600;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>🎂 Chúc Mừng Sinh Nhật Trường 🎉</h1>
+    <h2>Chúc bạn luôn vui vẻ, hạnh phúc và thành công! 💖</h2>
+
+    <audio autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/r9m0nheq63b1l9o7e4pkl/happy-birthday.mp3?raw=1" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Danh sách ảnh JPG
+        const images = [
+            'images/anh1.jpg',
+            'images/anh2.jpg',
+            'images/anh3.jpg',
+            'images/anh4.jpg'
+        ];
+
+        // Ảnh bay lên (thẳng)
+        for (let i = 0; i < 20; i++) {
+            const img = document.createElement('img');
+            img.src = images[Math.floor(Math.random() * images.length)];
+            img.classList.add('floating');
+            img.style.left = Math.random() * window.innerWidth + 'px';
+            img.style.width = 60 + Math.random() * 40 + 'px';
+            img.style.animationDuration = (8 + Math.random() * 6) + 's';
+            img.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(img);
+        }
+
+        // Bánh sinh nhật nhỏ (vẽ bằng CSS)
+        for (let i = 0; i < 6; i++) {
+            const cake = document.createElement('div');
+            cake.classList.add('mini-cake');
+            cake.style.left = Math.random() * window.innerWidth + 'px';
+            cake.style.animationDuration = (10 + Math.random() * 5) + 's';
+            cake.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(cake);
+        }
+
+        // Pháo giấy rơi
+        for (let i = 0; i < 100; i++) {
+            const conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.animationDuration = (3 + Math.random() * 5) + 's';
+            conf.style.setProperty('--hue', Math.random());
+            document.body.appendChild(conf);
+        }
+    </script>
+
+</body>
+</html>
